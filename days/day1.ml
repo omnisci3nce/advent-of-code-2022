@@ -23,8 +23,7 @@ let () =
 
   let top_three = elves
     |> List.map sum
-    |> List.sort compare
-    |> List.rev
+    |> List.sort (fun x y -> compare y x)
     |> CCList.take 3
     |> sum in
     Printf.printf "\n(Part 2) Total of top three elves is %d\n" top_three;
