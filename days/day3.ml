@@ -10,7 +10,7 @@ let get_priority c =
 
 module CharSet = Set.Make(Char)
 
-(* kinda scuffed *)
+(* kinda scuffed way of splitting string in half *)
 let parse_rucksack line =
   let compartment_size = (String.length line) / 2 in
   let char_list = String.to_list line in
@@ -39,10 +39,6 @@ let () =
     In_channel.with_open_bin "days/input_day3_sample.txt" In_channel.input_all
     |> String.split_on_char '\n' in
   let rucksacks = List.map parse_rucksack lines in
-  
-  let duplicates: char list = List.map find_duplicate rucksacks in
-  List.iter (fun d -> Printf.printf "Char duplicate item %c\n" d) duplicates;
-
   List.iter (fun r -> Printf.printf "%s %s\n" (fst r) (snd r)) rucksacks;
 
   let items_sum = rucksacks
